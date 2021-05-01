@@ -27,17 +27,26 @@ router.get("/", async (req, res, next) => {
 //POST /api/translate/
 router.post("/", async (req, res, next) => {
   try {
-    const translation = await translate("comment sa vas", { to: "en" });
-    //console.log(" res.text ========>>>>>>>>(/=> I speak English", res.text);
-    //=> I speak English
-    //console.log(
-    //   "res.from.language.iso (//=> nl)=============>>>>>>>>>>>",
-    //   res.from.language.iso
-    // );
-    //=> nl
+    const { inputText, language } = req.body;
+    const translation = await translate(inputText, { to: language });
+    const { value, didYouMean } = await translation.from.text;
 
-    console.log(translation);
-    res.send(translation.text);
+    //if there was an autocorrect in input text
+    if (didYouMean) {
+      console.log(
+        "translation.text, value ------->>>>>>>",
+        translation.text,
+        value
+      );
+      res.status(400).send(`Did you mean? ${value}`);
+      return;
+    } else {
+      console.log(
+        "ttranslation.text =================33333>",
+        translation.text
+      );
+      res.send(translation.text);
+    }
   } catch (err) {
     next(err);
   }
