@@ -47,6 +47,7 @@ router.post("/", async (req, res, next) => {
       );
       res.send(translation.text);
     }
+    ç;
   } catch (err) {
     next(err);
   }
