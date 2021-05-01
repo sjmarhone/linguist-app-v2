@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FS-App-Template
 
 ## Setup
@@ -75,3 +76,6 @@ Database Setup
 
 
 Now, you should be deployed!
+=======
+# linguist-app-v2
+>>>>>>> 4ed270ba89e2bbea4ce28d555d3ef2a630697a47
