@@ -42,10 +42,6 @@ class Translator extends React.Component {
     return (
       <div>
         <div>
-          <h3>Text Translator</h3>
-        </div>
-
-        <div>
           <form onSubmit={this.handleSubmit}>
             <div>
               <label htmlFor="inputText">Write Text:</label>
@@ -54,7 +50,7 @@ class Translator extends React.Component {
                 name="inputText"
                 value={this.state.inputText}
                 type="text"
-                cols="30"
+                cols="100"
                 rows="10"
               />
             </div>
@@ -77,24 +73,24 @@ class Translator extends React.Component {
             <div>
               <button type="submit">Translate</button>
             </div>
+
+            <div>
+              <label htmlFor="outputText">Translation: </label>
+              <textarea
+                name="outputText"
+                value={this.state.outputText}
+                type="text"
+                cols="100"
+                rows="10"
+                readOnly
+              >
+                {this.state.outputText}
+              </textarea>
+            </div>
           </form>
 
           <div onClick={this.handleClearText}>
             <button type="clearText">Clear Text</button>
-          </div>
-
-          <div>
-            <label htmlFor="outputText">Translation: </label>
-            <textarea
-              name="outputText"
-              value={this.state.outputText}
-              type="text"
-              cols="30"
-              rows="10"
-              readOnly
-            >
-              {this.state.outputText}
-            </textarea>
           </div>
         </div>
       </div>
